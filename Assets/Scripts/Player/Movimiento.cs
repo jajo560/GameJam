@@ -87,6 +87,7 @@ public class Movimiento : MonoBehaviour
             if (GameManager.Instance.Weight + collision.GetComponent<IRescue>().weight <= GameManager.Instance.MaxWeight)
             {
                 collision.gameObject.SetActive(false);
+                GameManager.Instance.PeopleInSack++;
                 collision.GetComponent<IRescue>().Rescue();
             }
             
@@ -94,6 +95,8 @@ public class Movimiento : MonoBehaviour
 
         if(collision.tag == "Bunker")
         {
+            GameManager.Instance.SavePeople();
+            GameManager.Instance.PeopleInSack = 0;
             GameManager.Instance.Weight = 0;
         }
     }

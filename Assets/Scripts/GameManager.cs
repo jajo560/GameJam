@@ -13,6 +13,10 @@ public class GameManager : MonoBehaviour
 
     public bool IsSafe;
 
+    public SceneSettings currentSceneSettings;
+
+    public int PeopleInSack;
+
     private void Awake()
     {
         if (Instance == null)
@@ -29,6 +33,12 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         SceneManager.sceneLoaded += ResetWeigth;
+        SceneManager.sceneLoaded += GetSceneSettings;
+    }
+
+    private void GetSceneSettings(Scene arg0, LoadSceneMode arg1)
+    {
+        currentSceneSettings = FindAnyObjectByType<SceneSettings>();
     }
 
     private void ResetWeigth(Scene arg0, LoadSceneMode arg1)
@@ -39,17 +49,12 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= ResetWeigth;
+        SceneManager.sceneLoaded -= GetSceneSettings;
     }
-    // Start is called before the first frame update
-    void Start()
+    
+    public void SavePeople()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        currentSceneSettings.PeopleRescued += PeopleInSack;
     }
 
     public void AddWeight(int weight)
