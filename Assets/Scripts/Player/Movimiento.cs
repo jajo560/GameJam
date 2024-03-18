@@ -37,13 +37,13 @@ public class Movimiento : MonoBehaviour
                 speedDebuff = 1;
                 break;
             case 1:
-                speedDebuff = 0.8f;
+                speedDebuff = 0.9f;
                 break;
             case 2:
-                speedDebuff = 0.6f;
+                speedDebuff = 0.8f;
                 break;
             case 3:
-                speedDebuff = 0.4f;
+                speedDebuff = 0.7f;
                 break;
             default:
                 break;
