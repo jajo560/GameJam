@@ -155,6 +155,8 @@ MonoBehaviour:
   Weight: 0
   MaxWeight: 3
   IsSafe: 0
+  currentSceneSettings: {fileID: 0}
+  PeopleInSack: 0
 --- !u!4 &57598949
 Transform:
   m_ObjectHideFlags: 0
@@ -899,10 +901,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5755b4742e390b40b2d860e8725d1c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxTime: 0
-  Time: 0
+  MaxTime: 30
+  Timer: 0
   TotalPeople: 0
   PeopleRescued: 0
+  TotalPoints: 0
 --- !u!1 &1286785574
 GameObject:
   m_ObjectHideFlags: 0
