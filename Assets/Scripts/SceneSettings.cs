@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SceneSettings : MonoBehaviour
 {
@@ -17,6 +19,11 @@ public class SceneSettings : MonoBehaviour
     public int TotalPoints;
     private float _rescuePercentage;
 
+    [Header("UI")]
+    public TextMeshProUGUI SavedText;
+    public TextMeshProUGUI TimerText;
+    public List<Image> images;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,14 +37,24 @@ public class SceneSettings : MonoBehaviour
                 TotalPeople++;
             }
         }
+
+        foreach(var im in images) 
+        {
+            var tempColor = im.color;
+            tempColor.a = .5f;
+            im.color = tempColor;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        SavedText.text = PeopleRescued + " / " + TotalPeople;
+
         if (Timer > 0)
         {
             Timer -= Time.deltaTime;
+            TimerText.text = Timer.ToString("00:00");
         }
         else if(Timer <= 0) 
         {
@@ -89,5 +106,15 @@ public class SceneSettings : MonoBehaviour
         }
 
         
+    }
+
+    void TransparentSack()
+    {
+        for(int i = 0; i < GameManager.Instance.Weight; i++) 
+        {
+            var tempColor = images[i].color;
+            tempColor.a = 1f;
+            images[i].color = tempColor;
+        }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class GameManager : MonoBehaviour
 
     public bool strengthBuff = false;
 
-    
+    public List<Image> images;
+
 
     private void Awake()
     {
@@ -39,6 +41,9 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += ResetWeigth;
         SceneManager.sceneLoaded += GetSceneSettings;
+        SceneManager.sceneLoaded += TransparentSack;
+
+        
     }
 
     private void GetSceneSettings(Scene arg0, LoadSceneMode arg1)
@@ -60,6 +65,7 @@ public class GameManager : MonoBehaviour
     public void SavePeople()
     {
         currentSceneSettings.PeopleRescued += PeopleInSack;
+        Transparent();
     }
 
     public void AddWeight(int weight)
@@ -68,7 +74,27 @@ public class GameManager : MonoBehaviour
         {
             Weight += weight;
         }
+
+        for (int i = 0; i < GameManager.Instance.Weight; i++)
+        {
+            var tempColor = images[i].color;
+            tempColor.a = 1f;
+            images[i].color = tempColor;
+        }
     }
 
- 
+    private void TransparentSack(Scene arg0, LoadSceneMode arg1)
+    {
+        Transparent();
+    }
+
+    private void Transparent()
+    {
+        foreach (var im in images)
+        {
+            var tempColor = im.color;
+            tempColor.a = .5f;
+            im.color = tempColor;
+        }
+    }
 }
