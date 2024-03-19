@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     public int MaxWeight;
 
     public bool IsSafe;
+    public bool isDead;
+    public bool hasBarbie;
 
     public SceneSettings currentSceneSettings;
 

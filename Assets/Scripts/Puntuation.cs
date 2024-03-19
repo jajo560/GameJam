@@ -13,7 +13,7 @@ public class Puntuation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (GameManager.Instance.IsSafe)
+        if (GameManager.Instance.isDead)
         {
             DeadOrNot.text = "Dead: No";
         }
@@ -24,6 +24,14 @@ public class Puntuation : MonoBehaviour
 
         PeopleSaved.text = "People Saved: " + GameManager.Instance.peopleRescued + "/" +GameManager.Instance.totalPeople;
 
+        if(GameManager.Instance.hasBarbie ) 
+        {
+            Barbie.text = "Barbie: Yes";
+        }
+        else
+        {
+            Barbie.text = "Barbie: No";
+        }
 
     }
 

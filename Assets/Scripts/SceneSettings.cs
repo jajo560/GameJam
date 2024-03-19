@@ -85,7 +85,7 @@ public class SceneSettings : MonoBehaviour
 
             Time.timeScale = 0f;
             GameManager.Instance.peopleRescued = PeopleRescued;
-
+            GameManager.Instance.isDead = GameManager.Instance.IsSafe;
             SceneManager.LoadScene("Puntuation");
         }
 
