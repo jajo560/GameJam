@@ -9,8 +9,17 @@ public class Movimiento : MonoBehaviour
     public float horizontal;
     public float vertical;
     public float speedDebuff;
-    
-    
+    public GameObject Player;
+    public Animator anim;
+    private SpriteRenderer spriteRender;
+
+
+    private void Awake()
+    {
+        anim = GetComponentInChildren<Animator>();
+        spriteRender = Player.GetComponent<SpriteRenderer>();
+
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -56,24 +65,36 @@ public class Movimiento : MonoBehaviour
     {
         if (horizontal < 0)
         {
+            anim.SetTrigger("Running");
+            spriteRender.flipX = true;
             transform.position += new Vector3(horizontal, 0, 0) * speed * speedDebuff * Time.deltaTime;
         }
 
-        if (horizontal > 0)
+        else if (horizontal > 0)
         {
+            anim.SetTrigger("Running");
+            spriteRender.flipX = false;
             transform.position += new Vector3(horizontal, 0, 0) * speed * speedDebuff * Time.deltaTime;
         }
 
-        if (vertical > 0)
+        else if (vertical > 0)
         {
+            anim.SetTrigger("Behind");
             transform.position += new Vector3(0, vertical, 0) * speed  * speedDebuff* Time.deltaTime;
         }
 
 
-        if (vertical < 0)
+        else if (vertical < 0)
         {
+            anim.SetTrigger("Front");
             transform.position += new Vector3(0, vertical, 0) * speed  * speedDebuff* Time.deltaTime;
         }
+
+        else
+        {
+            anim.SetTrigger("Stand");
+        }
+
     }
 
     private void HandleInputs()
