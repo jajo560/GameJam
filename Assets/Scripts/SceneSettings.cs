@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SceneSettings : MonoBehaviour
@@ -84,7 +85,8 @@ public class SceneSettings : MonoBehaviour
 
             Time.timeScale = 0f;
             GameManager.Instance.peopleRescued = PeopleRescued;
-            
+
+            SceneManager.LoadScene("Puntuation");
         }
 
 
