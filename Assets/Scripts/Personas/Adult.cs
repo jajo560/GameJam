@@ -9,18 +9,19 @@ public class Adult : MonoBehaviour, IRescue
 
     public void Rescue()
     {
-        GameManager.Instance.AddWeight(weight);
+        if (GameManager.Instance.strengthBuff)
+        {
+            int newWeight;
+            
+            newWeight = Mathf.RoundToInt(weight * 0.5f);
+            Debug.Log(newWeight);
+            GameManager.Instance.AddWeight(newWeight);
+
+        }
+        else
+        {
+            GameManager.Instance.AddWeight(weight);
+        }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

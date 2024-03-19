@@ -9,6 +9,8 @@ public class Movimiento : MonoBehaviour
     public float horizontal;
     public float vertical;
     public float speedDebuff;
+    
+    
 
     // Start is called before the first frame update
     void Start()
