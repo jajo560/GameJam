@@ -52,11 +52,21 @@ public class GameManager : MonoBehaviour
     private void GetSceneSettings(Scene arg0, LoadSceneMode arg1)
     {
         currentSceneSettings = FindAnyObjectByType<SceneSettings>();
+        Time.timeScale = 1.0f;
     }
 
     private void ResetWeigth(Scene arg0, LoadSceneMode arg1)
     {
         Weight = 0;
+
+        images.Clear();
+
+        GameObject[] go = GameObject.FindGameObjectsWithTag("Weight"); 
+
+        foreach(GameObject go2 in go) 
+        {
+            images.Add(go2.GetComponent<Image>());
+        }
     }
 
     private void OnDisable()

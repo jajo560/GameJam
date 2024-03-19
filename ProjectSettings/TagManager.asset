@@ -9,6 +9,7 @@ TagManager:
   - Bump
   - GroupPeople
   - Car
+  - Weight
   layers:
   - Default
   - TransparentFX
