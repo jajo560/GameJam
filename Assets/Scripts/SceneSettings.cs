@@ -38,7 +38,9 @@ public class SceneSettings : MonoBehaviour
             }
         }
 
+        GameManager.Instance.totalPeople = TotalPeople;
         
+
     }
 
     // Update is called once per frame
@@ -73,9 +75,11 @@ public class SceneSettings : MonoBehaviour
             
 
             Time.timeScale = 0f;
-
+            GameManager.Instance.peopleRescued = PeopleRescued;
             
         }
+
+
     }
 
     private void CalculateRescuePercentage()

@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public int peopleRescued;
+    public int totalPeople;
+
     public static GameManager Instance;
     public int Weight;
 
