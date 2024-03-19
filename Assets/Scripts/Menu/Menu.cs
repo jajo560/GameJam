@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour
 {
     public GameObject Team;
+    public GameObject PauseMenu;
 
     public void ExitGame()
     {
@@ -31,4 +32,11 @@ public class Menu : MonoBehaviour
             Team.SetActive(false);
         }
     }
+
+    public void QuitPauseMenu()
+    {
+        PauseMenu.SetActive(false);
+        Time.timeScale = 1.0f;
+    }
+
 }

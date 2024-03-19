@@ -22,7 +22,9 @@ public class SceneSettings : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI SavedText;
     public TextMeshProUGUI TimerText;
-    
+
+
+    public GameObject PauseMenu;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +48,12 @@ public class SceneSettings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Escape)) 
+        {
+            PauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+
         SavedText.text = PeopleRescued + " / " + TotalPeople;
 
         if (Timer > 0)
