@@ -10,6 +10,12 @@ TagManager:
   - GroupPeople
   - Car
   - Weight
+  - KidSpawn
+  - AdultSpawn
+  - ElderSpawn
+  - BarbieSpawn
+  - STSpawn
+  - SPESpawn
   layers:
   - Default
   - TransparentFX
