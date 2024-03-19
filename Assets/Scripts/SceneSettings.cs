@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class SceneSettings : MonoBehaviour
@@ -10,12 +11,17 @@ public class SceneSettings : MonoBehaviour
     public float Timer;
     private bool _canCalculatePoints = true;
     
+    
 
     [Header("Point Settings")]
     public int TotalPeople;
     public int PeopleRescued;
     public int TotalPoints;
     private float _rescuePercentage;
+
+    [Header("UI")]
+    public TextMeshProUGUI TimerText;
+    public TextMeshProUGUI PeopleText;
 
     // Start is called before the first frame update
     void Start()
@@ -35,9 +41,12 @@ public class SceneSettings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        PeopleText.text = PeopleRescued + " / " + TotalPeople;
+
         if (Timer > 0)
         {
             Timer -= Time.deltaTime;
+            TimerText.text = Timer.ToString("00:00");
         }
         else if(Timer <= 0) 
         {

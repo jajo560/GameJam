@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class GameManager : MonoBehaviour
 
     public SceneSettings currentSceneSettings;
 
+    [Header("Sack Settings")]
     public int PeopleInSack;
+    public List<Image> PeopleList;
 
     private void Awake()
     {
@@ -55,6 +58,23 @@ public class GameManager : MonoBehaviour
     public void SavePeople()
     {
         currentSceneSettings.PeopleRescued += PeopleInSack;
+
+        TransparentPeople();
+    }
+
+    private void Start()
+    {
+        TransparentPeople();
+    }
+
+    private void TransparentPeople()
+    {
+        foreach (var item in PeopleList)
+        {
+            var tempColor = item.color;
+            tempColor.a = .5f;
+            item.color = tempColor;
+        }
     }
 
     public void AddWeight(int weight)
@@ -62,6 +82,13 @@ public class GameManager : MonoBehaviour
         if (Weight < MaxWeight)
         {
             Weight += weight;
+        }
+
+        for (int i = 0; i < Weight; i++)
+        {
+            var tempColor = PeopleList[i].color;
+            tempColor.a = 1f;
+            PeopleList[i].color = tempColor;
         }
     }
 }
