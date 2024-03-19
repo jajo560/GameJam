@@ -17,6 +17,11 @@ public class GameManager : MonoBehaviour
 
     public int PeopleInSack;
 
+
+    public bool strengthBuff = false;
+
+    
+
     private void Awake()
     {
         if (Instance == null)
