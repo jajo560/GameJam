@@ -49,10 +49,15 @@ public class SceneSettings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape)) 
+        if(Input.GetKeyDown(KeyCode.Escape) && !PauseMenu.activeSelf) 
         {
             PauseMenu.SetActive(true);
             Time.timeScale = 0f;
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape) && PauseMenu.activeSelf)
+        {
+            PauseMenu.SetActive(false);
+            Time.timeScale = 1f;
         }
 
         SavedText.text = PeopleRescued + " / " + TotalPeople;
