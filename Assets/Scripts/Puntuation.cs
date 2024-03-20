@@ -15,11 +15,11 @@ public class Puntuation : MonoBehaviour
     {
         if (GameManager.Instance.isDead)
         {
-            DeadOrNot.text = "Dead: No";
+            DeadOrNot.text = "Survived: Yes";
         }
         else
         {
-            DeadOrNot.text = "Dead: Yes";
+            DeadOrNot.text = "Survived: No";
         }
 
         PeopleSaved.text = "People Saved: " + GameManager.Instance.peopleRescued + "/" +GameManager.Instance.totalPeople;

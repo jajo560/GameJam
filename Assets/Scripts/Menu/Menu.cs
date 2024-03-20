@@ -8,6 +8,7 @@ public class Menu : MonoBehaviour
 {
     public GameObject Team;
     public GameObject PauseMenu;
+    public GameObject Barbie;
 
     public void ExitGame()
     {
@@ -39,4 +40,12 @@ public class Menu : MonoBehaviour
         Time.timeScale = 1.0f;
     }
 
+
+    private void Update()
+    {
+        if(GameManager.Instance.hasBarbie && Barbie != null)
+        {
+            Barbie.SetActive(true);
+        }
+    }
 }
