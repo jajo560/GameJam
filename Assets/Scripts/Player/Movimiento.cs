@@ -34,10 +34,12 @@ public class Movimiento : MonoBehaviour
 
         ApplyDebuff();
 
+        
+    }
+
+    private void FixedUpdate()
+    {
         Move();
-
-
-
     }
 
     private void ApplyDebuff()
@@ -99,8 +101,8 @@ public class Movimiento : MonoBehaviour
 
     private void HandleInputs()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

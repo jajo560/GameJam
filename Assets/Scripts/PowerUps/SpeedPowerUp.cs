@@ -12,7 +12,12 @@ public class SpeedPowerUp : MonoBehaviour
     public float OriginalSpeed;
 
     // Update is called once per frame
-    
+
+
+    private void Start()
+    {
+        player  = FindObjectOfType<Movimiento>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

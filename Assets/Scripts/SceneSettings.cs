@@ -10,14 +10,13 @@ public class SceneSettings : MonoBehaviour
     [Header("Timer")]
     public float MaxTime;
     public float Timer;
-    private bool _canCalculatePoints = true;
 
 
     [Header("Point Settings")]
     public int TotalPeople;
     public int PeopleRescued;
-    public int TotalPoints;
-    private float _rescuePercentage;
+
+
 
     [Header("UI")]
     public TextMeshProUGUI SavedText;
@@ -165,6 +164,14 @@ public class SceneSettings : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(TotalPeople == PeopleRescued && GameManager.Instance.IsSafe)
+        {
+            Time.timeScale = 0f;
+            GameManager.Instance.peopleRescued = PeopleRescued;
+            GameManager.Instance.isDead = GameManager.Instance.IsSafe;
+            SceneManager.LoadScene("Puntuation");
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape) && !PauseMenu.activeSelf)
         {
             PauseMenu.SetActive(true);
@@ -185,25 +192,6 @@ public class SceneSettings : MonoBehaviour
         }
         else if (Timer <= 0)
         {
-            if (_canCalculatePoints)
-            {
-                CalculateRescuePercentage();
-
-                if (GameManager.Instance.IsSafe)
-                {
-                    TotalPoints += 3;
-                }
-                else
-                {
-                    TotalPoints += 0;
-                }
-
-                Debug.Log(TotalPoints);
-
-                _canCalculatePoints = false;
-            }
-
-
             Time.timeScale = 0f;
             GameManager.Instance.peopleRescued = PeopleRescued;
             GameManager.Instance.isDead = GameManager.Instance.IsSafe;
@@ -213,30 +201,6 @@ public class SceneSettings : MonoBehaviour
 
     }
 
-    private void CalculateRescuePercentage()
-    {
-        _rescuePercentage = (float)PeopleRescued / (float)TotalPeople * 100;
-
-
-        if (_rescuePercentage == 0f)
-        {
-            TotalPoints += 0;
-        }
-        else if (_rescuePercentage < 50f && _rescuePercentage > 0f)
-        {
-            TotalPoints += 1;
-        }
-        else if (_rescuePercentage >= 50f && _rescuePercentage < 100f)
-        {
-            TotalPoints += 2;
-        }
-        else if (_rescuePercentage == 100f)
-        {
-            TotalPoints += 3;
-        }
-
-
-    }
 
 
 }
