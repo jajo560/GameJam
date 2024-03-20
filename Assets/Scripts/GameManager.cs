@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
         {
             images.Add(go2.GetComponent<Image>());
         }
+
+        hasBarbie = false;
     }
 
     private void OnDisable()
